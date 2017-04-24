@@ -4,6 +4,11 @@ Payment Ease: POS Transactions Simplified
 ### Mission Statement
 Remove transaction pain and unnessesary costs in an open, fair, simple and clear flow.
 
+### What is the Opportunity
+- It's painful to sign up for a proper merchant account in a store
+- Stripe is buggy/too small scale
+- Merchant account doesn't blend with inventory
+
 ### User Stories
 
 #### As a store owner I want to:
@@ -31,12 +36,21 @@ Remove transaction pain and unnessesary costs in an open, fair, simple and clear
 ### Customer Experience
 
 ### User Experience 
+```
+- Visit a store
+- Accept prompt to start interaction
+- Scan items or transactions posted by store
+- Purchase authorized/session closed upon exiting
+```
 
 ### Techno Flow
 
 ##### Set Up:
 1. Log details/verify
 2. Set up geofence
+  + Why use geofence:
+    + Simplify user experience
+    + Less set up/friction to complete a transaction
 
 #### User:
 1. Service worker prompts to start transaction
