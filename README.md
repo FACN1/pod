@@ -6,7 +6,7 @@ Remove transaction pain and unnessesary costs in an open, fair, simple and clear
 
 ### User Stories
 
-#### As a store owner I want:
+#### As a store owner I want to:
 > Pay no more for POS transactions than I do currently
 
 > Lower hardware/upgrade requirements and costs
