@@ -1,4 +1,4 @@
-# pease
+# pod
 Payment Ease: POS Transactions Simplified
 
 ### Mission Statement
