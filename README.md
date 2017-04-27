@@ -2,7 +2,7 @@
 Payment Ease: POS Transactions Simplified
 
 ### Mission Statement
-Remove transaction pain and unnessesary costs in an open, fair, simple and clear flow.
+Remove transaction pain and unnecessary costs in an open, fair, simple and clear flow.
 
 ### What is the Opportunity
 - It's painful to sign up for a proper merchant account in a store
@@ -35,7 +35,7 @@ Remove transaction pain and unnessesary costs in an open, fair, simple and clear
 
 ### Customer Experience
 
-### User Experience 
+### User Experience
 ```
 - Visit a store
 - Accept prompt to start interaction
@@ -55,11 +55,11 @@ Remove transaction pain and unnessesary costs in an open, fair, simple and clear
 #### User:
 1. Service worker prompts to start transaction
 2. Transaction token produced
-3. Token provides vendor with neccessary customer information, and logs transaction information
+3. Token provides vendor with necessary customer information, and logs transaction information
 4. Scan products with barcode reader
 5. Payment source is Authorized/Checked but not completed
 6. Once the geo boundary is exited the transaction is completed.
 
 ### Legal
 1. User and Customer identities are verified before app use
-2. 
+2.
