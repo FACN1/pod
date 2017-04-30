@@ -5,66 +5,33 @@ Payment Ease: POS Transactions Simplified
 - https://xd.adobe.com/view/0582c5d1-592c-4697-8d87-7333927a849b/
 - https://xd.adobe.com/view/81c5b485-d346-4bca-aa43-6ac30fd6255b/
 
+#### MVP User Journey
 
-### Mission Statement
-Remove transaction pain and unnecessary costs in an open, fair, simple and clear flow.
+As a consumer:
+> I want to be able to buy items in a shop using my phone.
 
-### What is the Opportunity
-- It's painful to sign up for a proper merchant account in a store
-- Stripe is buggy/too small scale
-- Merchant account doesn't blend with inventory
+#### MVP User Stories
 
-### User Stories
+As a consumer:
+> Be able to start a shopping experience when entering a shop.
 
-#### As a store owner I want to:
-> Pay no more for POS transactions than I do currently
+> Add/remove/update items quickly in my shopping cart.
 
-> Lower hardware/upgrade requirements and costs
+> View details of my shopping experience.
 
-> Lower employee costs associated with processing transactions
+> Automatically pay for my purchases when I leave the shop.
 
-> Free up staff to focus on customer needs
+#### File Setup
 
-> Simplify my accounting and customer records
 
-#### As a customer I want:
-> To pay no direct fees for use
 
-> The ability to link my bank account and/or credit cards to simplify transactions
+#### Technology
 
-> A fast/simple sign up process and interface
+**Front End:**
+- Web Components
+- Sass
+- Elm 
 
-> Nothing pushy
+**Back End:**
+- Hapi
 
-> The ability to leave my wallet at home
-
-### Customer Experience
-
-### User Experience
-```
-- Visit a store
-- Accept prompt to start interaction
-- Scan items or transactions posted by store
-- Purchase authorized/session closed upon exiting
-```
-
-### Techno Flow
-
-##### Set Up:
-1. Log details/verify
-2. Set up geofence
-  + Why use geofence:
-    + Simplify user experience
-    + Less set up/friction to complete a transaction
-
-#### User:
-1. Service worker prompts to start transaction
-2. Transaction token produced
-3. Token provides vendor with necessary customer information, and logs transaction information
-4. Scan products with barcode reader
-5. Payment source is Authorized/Checked but not completed
-6. Once the geo boundary is exited the transaction is completed.
-
-### Legal
-1. User and Customer identities are verified before app use
-2.
