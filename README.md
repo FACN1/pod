@@ -23,6 +23,14 @@ As a consumer:
 
 #### File Structure
 - public
+  - _sass/
+    - main.scss
+  - assets/
+    - css/
+      - main.css
+    - js/
+      - main.js
+  
 - src
   - routes/
     - index.js
@@ -45,7 +53,7 @@ As a consumer:
 
 **Front End:**
 - Web Components
-- SASS
+- SASS - npm node-sass
 - Elm
 - Service Workers
 - Browser APIs:
