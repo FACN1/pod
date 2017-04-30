@@ -21,7 +21,23 @@ As a consumer:
 
 > Automatically pay for my purchases when I leave the shop.
 
-#### File Setup
+#### File Structure
+- public
+- src
+  - routes/
+    - index.js
+    - home.js
+    - static.js
+  - views/
+    - helpers/
+    - layouts/
+      - default.hbs
+    - partials/
+    - index.hbs
+  - server.js
+- tests
+  - client
+  - server
 
 
 
