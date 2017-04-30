@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/FACN1/pod#readme",
   "dependencies": {
+    "hapi": "^16.1.1",
     "node-sass": "^4.5.2"
   }
 }
