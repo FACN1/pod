@@ -48,14 +48,11 @@ As a consumer:
   - server
 
 
-
 #### Technology
 
 **Front End:**
 - Web Components
 - SASS - npm node-sass
-- Elm
-- Service Workers
 - Browser APIs:
   - Geolocation API
   - Media storage - camera
