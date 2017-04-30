@@ -29,9 +29,17 @@ As a consumer:
 
 **Front End:**
 - Web Components
-- Sass
-- Elm 
+- SASS
+- Elm
+- Service Workers
+- Browser APIs:
+  - Geolocation API
+  - Media storage - camera
 
 **Back End:**
 - Hapi
+- Handlebars
+- APIs:
+  - Google Cloud Vision
+- 
 
