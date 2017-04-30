@@ -1,6 +1,8 @@
 # pod
 Payment Ease: POS Transactions Simplified
 
+#### Prototype Link: https://xd.adobe.com/view/0582c5d1-592c-4697-8d87-7333927a849b/
+
 ### Mission Statement
 Remove transaction pain and unnecessary costs in an open, fair, simple and clear flow.
 
