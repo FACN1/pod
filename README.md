@@ -41,5 +41,4 @@ As a consumer:
 - Handlebars
 - APIs:
   - Google Cloud Vision
-- 
 
