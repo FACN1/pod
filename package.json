@@ -1,0 +1,22 @@
+{
+  "name": "pod",
+  "version": "1.0.0",
+  "description": "Payment Simplified",
+  "main": "src/start.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FACN1/pod.git"
+  },
+  "author": "Elias, Lawson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FACN1/pod/issues"
+  },
+  "homepage": "https://github.com/FACN1/pod#readme"
+}
