@@ -2,9 +2,6 @@
   "name": "pod",
   "version": "1.0.0",
   "description": "Payment Simplified",
-  "engines": {
-    "node": "7.9.0",
-  },
   "main": "src/start.js",
   "directories": {
     "test": "tests"
@@ -37,5 +34,8 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3"
+  },
+  "engines": {
+    "node": "7.9.0"
   }
 }
