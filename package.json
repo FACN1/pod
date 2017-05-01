@@ -15,7 +15,10 @@
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
   },
-  "pre-commit": [ "precommit-msg", "lint" ],
+  "pre-commit": [
+    "precommit-msg",
+    "lint"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FACN1/pod.git"
@@ -27,10 +30,12 @@
   },
   "homepage": "https://github.com/FACN1/pod#readme",
   "dependencies": {
+    "env2": "^2.1.1",
     "handlebars": "^4.0.7",
     "hapi": "^16.1.1",
     "inert": "^4.2.0",
     "node-sass": "^4.5.2",
+    "pg": "^6.1.5",
     "vision": "^4.1.1"
   },
   "devDependencies": {
