@@ -7,8 +7,10 @@
     "test": "tests"
   },
   "scripts": {
+    "start": "node src/start.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "./node_modules/.bin/node-sass --source-map true public/_sass/main.scss public/assets/css/main.css"
+    "sass": "./node_modules/.bin/node-sass --source-map true public/_sass/main.scss public/assets/css/main.css",
+    "postinstall": "npm run sass"
   },
   "repository": {
     "type": "git",
@@ -21,7 +23,11 @@
   },
   "homepage": "https://github.com/FACN1/pod#readme",
   "dependencies": {
-    "node-sass": "^4.5.2"
+    "handlebars": "^4.0.7",
+    "hapi": "^16.1.1",
+    "inert": "^4.2.0",
+    "node-sass": "^4.5.2",
+    "vision": "^4.1.1"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
@@ -29,5 +35,8 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3"
+  },
+  "engines": {
+    "node": "7.9.0"
   }
 }
