@@ -69,7 +69,7 @@ As a consumer:
 
 #### Database Schema
 
-**Shops**
+**shops**
 
 | ***Columns***  | ***Parameters  ***   |
 | :------------- | :------------------  |
@@ -77,7 +77,7 @@ As a consumer:
 |      name      | VARCHAR(255) NOT NULL|
 |    location    |         JSONB        |
 
-**Items**
+**items**
 
 | ***Columns***  |         ***Parameters  ***         |
 | :------------- | :--------------------------------  |
