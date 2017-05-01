@@ -10,8 +10,9 @@
     "start": "node src/start.js",
     "test": "node tests/server/tests.js | tap-spec",
     "coverage": "./node_modules/.bin/istanbul cover tests/server/tests.js",
-    "sass": "./node_modules/.bin/node-sass --source-map true public/_sass/main.scss public/assets/css/main.css",
-    "postinstall": "npm run sass",
+    "sass": "./node_modules/.bin/node-sass --source-map true client-build/sass/main.scss public/assets/css/main.css",
+    "build": "node gulpfile.js",
+    "postinstall": "node gulpfile.js",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
   },
@@ -39,15 +40,21 @@
     "vision": "^4.1.1"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.4.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
     "istanbul": "^0.4.5",
+    "pre-commit": "^1.2.2",
     "tap-spec": "^4.1.1",
-    "tape": "^4.6.3",
-    "pre-commit": "^1.2.2"
+    "tape": "^4.6.3"
   },
   "engines": {
     "node": "7.9.0"
