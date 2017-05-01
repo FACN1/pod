@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/FACN1/pod.git"
   },
-  "author": "Elias, Lawson",
+  "author": "macintoshhelper, philawsophizing",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/FACN1/pod/issues"
@@ -23,5 +23,12 @@
   "dependencies": {
     "hapi": "^16.1.1",
     "node-sass": "^4.5.2"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3"
   }
 }

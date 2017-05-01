@@ -30,7 +30,6 @@ As a consumer:
       - main.css
     - js/
       - main.js
-  
 - src
   - routes/
     - index.js
@@ -43,6 +42,11 @@ As a consumer:
     - partials/
     - index.hbs
   - server.js
+- database
+  - db_build.sql
+  - db_build.js
+  - db_connection.js
+
 - tests
   - client
   - server
