@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "node src/start.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node tests/server/tests.js | tap-spec",
+    "coverage": "./node_modules/.bin/istanbul cover tests/server/tests.js",
     "sass": "./node_modules/.bin/node-sass --source-map true public/_sass/main.scss public/assets/css/main.css",
     "postinstall": "npm run sass"
   },
