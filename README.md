@@ -23,7 +23,7 @@ As a consumer:
 
 #### File Structure
 - public
-  - _sass/
+  - \_sass/
     - main.scss
   - assets/
     - css/
@@ -67,3 +67,22 @@ As a consumer:
 - APIs:
   - Google Cloud Vision
 
+#### Database Schema
+
+**Shops**
+
+| ***Columns***  | ***Parameters  ***   |
+| :------------- | :------------------  |
+|       id       |  PRIMARY KEY SERIAL  |
+|      name      | VARCHAR(255) NOT NULL|
+|    location    |         JSONB        |
+
+**Items**
+
+| ***Columns***  |         ***Parameters  ***         |
+| :------------- | :--------------------------------  |
+|       id       |         PRIMARY KEY SERIAL         |
+|     shop_id    |  references shops(id) INT NOT NULL |
+|      name      |        VARCHAR(100) NOT NULL       |
+|   description  |            VARCHAR(255)            |
+|      price     |               NUMERIC              |
