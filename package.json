@@ -2,13 +2,17 @@
   "name": "pod",
   "version": "1.0.0",
   "description": "Payment Simplified",
+  "engines": {
+    "node": "7.9.0",
+  },
   "main": "src/start.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "./node_modules/.bin/node-sass --source-map true public/_sass/main.scss public/assets/css/main.css"
+    "sass": "./node_modules/.bin/node-sass --source-map true public/_sass/main.scss public/assets/css/main.css",
+    "postinstall": "npm run sass"
   },
   "repository": {
     "type": "git",
@@ -21,8 +25,11 @@
   },
   "homepage": "https://github.com/FACN1/pod#readme",
   "dependencies": {
+    "handlebars": "^4.0.7",
     "hapi": "^16.1.1",
-    "node-sass": "^4.5.2"
+    "inert": "^4.2.0",
+    "node-sass": "^4.5.2",
+    "vision": "^4.1.1"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
