@@ -1,0 +1,47 @@
+<link rel="import" href="./bower_components/polymer/polymer-element.html">
+<!--<link rel="import" href="../polymer/lib/elements/dom-if.html">-->
+<!--<link rel="import" href="../polymer/lib/elements/dom-repeat.html">-->
+
+<!--
+`pod-app`
+SPA of the Pod app
+
+@demo demo/index.html
+-->
+
+<dom-module id="pod-home">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <!--
+      app-location and app-route elements provide the state of the URL for the app.
+    -->
+    <iron-pages selected="[[routeData.view]]" attr-for-selected="name">
+      <my-profile-view name="profile" route="{{subroute}}"></my-profile-view>
+      <my-message-list-view name="messages" route="{{subroute}}"></my-message-list-view>
+      <my-detail-view name="detail" route="{{subroute}}"></my-detail-view>
+    </iron-pages>
+    <h2>Hello [[prop2]]!</h2>
+  </template>
+
+  <script>
+    /** @polymerElement */
+    class PodHome extends Polymer.Element {
+      static get is() { return 'pod-home'; }
+      static get properties() {
+        return {
+          prop2: {
+            type: String,
+            value: 'pod-home'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(PodHome.is, PodHome);
+  </script>
+</dom-module>
