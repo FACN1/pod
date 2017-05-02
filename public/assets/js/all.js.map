@@ -1,1 +1,0 @@
-{"version":3,"sources":["main.js"],"names":["echo","console","log"],"mappings":";;AAAA,IAAMA,OAAO,IAAb;;AAEAC,QAAQC,GAAR,CAAYF,IAAZ","file":"all.js","sourcesContent":["const echo = 'hi';\n\nconsole.log(echo);\n"]}
