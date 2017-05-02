@@ -17,14 +17,17 @@ const makeRequest = (method, url, callback) => {
 const clickLinkListener = (element) => {
   element.addEventListener('click', (event) => {
     event.preventDefault();
+
+    const originalUrl = document.getElementById('loadLink').href;
+
     console.log(event);
-    makeRequest('GET', event.path[0].href, (err, res) => {
+    makeRequest('GET', document.getElementById('loadLink').href, (err, res) => {
       if (err) {
         console.error(err);
         return;
       }
       document.getElementById('outerContainer').innerHTML = res;
-      window.history.pushState(null, null, event.path[0].href.split('?ajax=true')[0]);
+      window.history.pushState(null, null, originalUrl.split('?ajax=true')[0]);
 
       clickLinkListener(document.getElementById('loadLink'));
     });
@@ -39,7 +42,9 @@ const geo = navigator.geolocation;
 // If supported run:
 const displayLocation = (position) => {
   const latitude = position.coords.latitude;
+  console.log(latitude);
   const longitude = position.coords.longitude;
+  console.log(longitude);
   const div = document.getElementById('location');
   div.innerHTML = `You are at Latitude: ${latitude}, Longitude: ${longitude}`;
 };
