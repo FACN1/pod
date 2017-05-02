@@ -33,8 +33,6 @@ const clickLinkListener = (element) => {
 
 clickLinkListener(document.getElementById('loadLink'));
 
-
-
 const geo = navigator.geolocation;
 
 // If supported run:
