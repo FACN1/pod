@@ -11,7 +11,7 @@ gulp.task('default', () => {
     .pipe(babel({
       presets: ['env'],
     }))
-    .pipe(concat('all.js'))
+    .pipe(concat('main.js'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('public/assets/js'));
 });
