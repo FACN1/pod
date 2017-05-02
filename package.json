@@ -15,7 +15,7 @@
     "postinstall": "node gulpfile.js",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
-    "dev": "./node_modules/.bin/nodemon --ext js,scss --ignore public/ src/start.js"
+    "dev": "./node_modules/.bin/nodemon --ext js,scss,hbs --ignore public/ src/start.js"
   },
   "pre-commit": [
     "precommit-msg",
