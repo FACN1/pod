@@ -16,14 +16,16 @@ var makeRequest = function makeRequest(method, url, callback) {
   xhr.send();
 };
 
+var cCardLink = document.getElementById('loadLink');
+
 var clickLinkListener = function clickLinkListener(element) {
   element.addEventListener('click', function (event) {
     event.preventDefault();
 
-    var originalUrl = document.getElementById('loadLink').href;
+    var originalUrl = cCardLink.href;
 
     console.log(event);
-    makeRequest('GET', document.getElementById('loadLink').href, function (err, res) {
+    makeRequest('GET', cCardLink.href, function (err, res) {
       if (err) {
         console.error(err);
         return;
@@ -31,35 +33,61 @@ var clickLinkListener = function clickLinkListener(element) {
       document.getElementById('outerContainer').innerHTML = res;
       window.history.pushState(null, null, originalUrl.split('?ajax=true')[0]);
 
-      clickLinkListener(document.getElementById('loadLink'));
+      clickLinkListener(cCardLink);
     });
   });
 };
 
-clickLinkListener(document.getElementById('loadLink'));
+clickLinkListener(cCardLink);
 
 var geo = navigator.geolocation;
 
 // If supported run:
 var displayLocation = function displayLocation(position) {
+  // Store position
   var latitude = position.coords.latitude;
-  console.log(latitude);
   var longitude = position.coords.longitude;
-  console.log(longitude);
-  var div = document.getElementById('location');
-  div.innerHTML = 'You are at Latitude: ' + latitude + ', Longitude: ' + longitude;
+  // Set point to validate
+  var P = [latitude, longitude];
+  // Shop Coordinates
+  var A = shopCoordinates.location.NE;
+  var B = shopCoordinates.location.NW;
+  var C = shopCoordinates.location.SW;
+  var D = shopCoordinates.location.SE;
+  // Set Array of latitude, Array of longitude
+  var X = [A[0], B[0], C[0], D[0]];
+  var Y = [A[1], B[1], C[1], D[1]];
+  // Sort
+  X = X.sort(function (a, b) {
+    return a - b;
+  });
+  Y = Y.sort(function (a, b) {
+    return a - b;
+  });
+  // Check if coordinates are within shop geofence
+  if (P[0] >= X[0] && P[0] <= X[3]) {
+    if (P[1] >= Y[0] && P[1] <= Y[3]) {
+      return true;
+    }
+  }
+  return false;
 };
 
 // Check for geo support
 var getLocation = function getLocation() {
   if (geo) {
-    geo.watchPosition(displayLocation);
+    geo.watchPosition(function (position) {
+      if (displayLocation(position) === true) {
+        var div = document.getElementById('location');
+        div.innerHTML = 'Welcome to Khan El Shopa';
+      } else {
+        console.log('Not in the shop');
+      }
+    });
   } else {
     alert('Geolocation API not supported');
   }
 };
 
 window.onload = getLocation;
-
-console.log(shopCoordinates);
 //# sourceMappingURL=main.js.map
