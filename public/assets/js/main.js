@@ -42,24 +42,39 @@ var geo = navigator.geolocation;
 
 // If supported run:
 var displayLocation = function displayLocation(position) {
+  // Shop Coordinates
+  var NE = shopCoordinates.location.NE;
+  var NW = shopCoordinates.location.NW;
+  var SW = shopCoordinates.location.SW;
+  var SE = shopCoordinates.location.SE;
+
   var latitude = position.coords.latitude;
-  console.log(latitude);
   var longitude = position.coords.longitude;
-  console.log(longitude);
-  var div = document.getElementById('location');
-  div.innerHTML = 'You are at Latitude: ' + latitude + ', Longitude: ' + longitude;
+
+  // Check if coordinates are within shop geofence
+
+  if (latitude >= NW[0] && latitude <= NE[0] && latitude >= SW[0] && latitude <= SE[0]) {
+    if (longitude >= NW[1] && longitude <= NE[1] && longitude >= SW[1] && longitude <= SE[1]) {
+      return true;
+    }
+  }return false;
 };
 
 // Check for geo support
 var getLocation = function getLocation() {
   if (geo) {
-    geo.watchPosition(displayLocation);
+    geo.watchPosition(function (position) {
+      if (displayLocation(position) === true) {
+        var div = document.getElementById('location');
+        div.innerHTML = 'Welcome to Khan El Shopa';
+      } else {
+        console.log('Not in the shop');
+      }
+    });
   } else {
     alert('Geolocation API not supported');
   }
 };
 
 window.onload = getLocation;
-
-console.log(shopCoordinates);
 //# sourceMappingURL=main.js.map
