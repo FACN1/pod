@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS shops cascade;
+DROP TABLE IF EXISTS shops, items cascade;
 
 CREATE TABLE shops (
   id SERIAL PRIMARY KEY,
