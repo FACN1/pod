@@ -60,4 +60,6 @@ var getLocation = function getLocation() {
 };
 
 window.onload = getLocation;
+
+console.log(shopCoordinates);
 //# sourceMappingURL=main.js.map

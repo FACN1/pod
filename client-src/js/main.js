@@ -59,3 +59,6 @@ const getLocation = () => {
 };
 
 window.onload = getLocation;
+
+
+console.log(shopCoordinates);
