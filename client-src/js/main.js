@@ -62,3 +62,9 @@ window.onload = getLocation;
 
 
 console.log(shopCoordinates);
+
+function addOne(input) {
+  return input + 1;
+}
+
+addOne(1);

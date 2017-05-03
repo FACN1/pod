@@ -1,3 +1,4 @@
+"use strict";
 'use strict';
 
 var makeRequest = function makeRequest(method, url, callback) {
@@ -62,4 +63,11 @@ var getLocation = function getLocation() {
 window.onload = getLocation;
 
 console.log(shopCoordinates);
+
+function addOne(input) {
+  return input + 1;
+}
+
+addOne(1);
+"use strict";
 //# sourceMappingURL=main.js.map

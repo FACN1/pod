@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node src/start.js",
     "test": "node tests/server/tests.js | tap-spec",
+    "client-test": "browserify tests/client/tests.js > public/assets/js/testbundle.js && open http://localhost:3000/test.html",
     "coverage": "./node_modules/.bin/istanbul cover tests/server/tests.js",
     "sass": "./node_modules/.bin/node-sass --source-map true client-build/sass/main.scss public/assets/css/main.css",
     "build": "node gulpfile.js",
@@ -21,6 +22,9 @@
     "precommit-msg",
     "lint"
   ],
+  "testling": {
+    "html": "./public/test.html"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FACN1/pod.git"
