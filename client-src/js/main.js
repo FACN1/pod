@@ -14,14 +14,16 @@ const makeRequest = (method, url, callback) => {
   xhr.send();
 };
 
+const cCardLink = document.getElementById('loadLink');
+
 const clickLinkListener = (element) => {
   element.addEventListener('click', (event) => {
     event.preventDefault();
 
-    const originalUrl = document.getElementById('loadLink').href;
+    const originalUrl = cCardLink.href;
 
     console.log(event);
-    makeRequest('GET', document.getElementById('loadLink').href, (err, res) => {
+    makeRequest('GET', cCardLink.href, (err, res) => {
       if (err) {
         console.error(err);
         return;
@@ -29,33 +31,40 @@ const clickLinkListener = (element) => {
       document.getElementById('outerContainer').innerHTML = res;
       window.history.pushState(null, null, originalUrl.split('?ajax=true')[0]);
 
-      clickLinkListener(document.getElementById('loadLink'));
+      clickLinkListener(cCardLink);
     });
   });
 };
 
-clickLinkListener(document.getElementById('loadLink'));
+clickLinkListener(cCardLink);
 
 const geo = navigator.geolocation;
 
 // If supported run:
 const displayLocation = (position) => {
-  // Shop Coordinates
-  const NE = shopCoordinates.location.NE;
-  const NW = shopCoordinates.location.NW;
-  const SW = shopCoordinates.location.SW;
-  const SE = shopCoordinates.location.SE;
-
+  // Store position
   const latitude = position.coords.latitude;
   const longitude = position.coords.longitude;
-
+  // Set point to validate
+  const P = [latitude, longitude];
+  // Shop Coordinates
+  const A = shopCoordinates.location.NE;
+  const B = shopCoordinates.location.NW;
+  const C = shopCoordinates.location.SW;
+  const D = shopCoordinates.location.SE;
+  // Set Array of latitude, Array of longitude
+  let X = [A[0], B[0], C[0], D[0]];
+  let Y = [A[1], B[1], C[1], D[1]];
+  // Sort
+  X = X.sort((a, b) => a - b);
+  Y = Y.sort((a, b) => a - b);
   // Check if coordinates are within shop geofence
-
-  if (latitude >= NW[0] && latitude <= NE[0] && latitude >= SW[0] && latitude <= SE[0]) {
-    if (longitude >= NW[1] && longitude <= NE[1] && longitude >= SW[1] && longitude <= SE[1]) {
+  if (P[0] >= X[0] && P[0] <= X[3]) {
+    if (P[1] >= Y[0] && P[1] <= Y[3]) {
       return true;
     }
-  } return false;
+  }
+  return false;
 };
 
 // Check for geo support
