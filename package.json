@@ -12,7 +12,7 @@
     "coverage": "./node_modules/.bin/istanbul cover tests/server/tests.js",
     "sass": "./node_modules/.bin/node-sass --source-map true client-build/sass/main.scss public/assets/css/main.css",
     "build": "node gulpfile.js",
-    "postinstall": "npm i && node gulpfile.js",
+    "postinstall": "node gulpfile.js",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
     "precommit-msg": "echo 'Pre-commit checks...' && exit 0",
     "dev": "./node_modules/.bin/nodemon --ext js,scss,hbs --ignore public/ src/start.js"
