@@ -38,6 +38,7 @@
     "inert": "^4.2.0",
     "node-sass": "^4.5.2",
     "pg": "^6.1.5",
+    "gulp": "^3.9.1",
     "vision": "^4.1.1"
   },
   "devDependencies": {
@@ -47,7 +48,6 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.1",
     "gulp-nodemon": "^2.2.1",
