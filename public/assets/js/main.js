@@ -42,7 +42,7 @@ clickLinkListener(cCardLink);
 
 var geo = navigator.geolocation;
 
-// If supported run:
+// If geolocation supported run:
 var displayLocation = function displayLocation(position) {
   // Store position
   var latitude = position.coords.latitude;
@@ -67,21 +67,25 @@ var displayLocation = function displayLocation(position) {
   // Check if coordinates are within shop geofence
   if (P[0] >= X[0] && P[0] <= X[3]) {
     if (P[1] >= Y[0] && P[1] <= Y[3]) {
+      // Show link
+      cCardLink.style.display = 'flex';
       return true;
     }
   }
+  // Hide link
+  cCardLink.style.display = 'none';
   return false;
 };
 
 // Check for geo support
 var getLocation = function getLocation() {
+  var div = document.getElementById('location');
   if (geo) {
     geo.watchPosition(function (position) {
-      if (displayLocation(position) === true) {
-        var div = document.getElementById('location');
+      if (displayLocation(position)) {
         div.innerHTML = 'Welcome to Khan El Shopa';
       } else {
-        console.log('Not in the shop');
+        div.innerHTML = '';
       }
     });
   } else {
