@@ -1,5 +1,5 @@
 const url = require('url');
-const path = require('path');
+// const path = require('path');
 const vision = require('@google-cloud/vision')({
 
   // The path to key file:
@@ -11,9 +11,11 @@ const handler = (request, reply) => {
 
   // const vision = Vision();
 
-  const fileName = path.join(__dirname, '../../public/assets/images/visa.png');
+  // // const fileName = path.join(__dirname, '../../public/assets/images/visa.png');
+  // console.log('Request payload: ', request.payload);
+  // // var encoded = new Buffer(imageFile).toString('base64');
 
-  vision.detectText(fileName)
+  vision.detectText(request.payload.path)
     .then((results) => {
       const detections = results[0];
 
@@ -34,7 +36,14 @@ const handler = (request, reply) => {
 };
 
 module.exports = {
-  method: 'GET',
+  method: 'POST',
   path: '/card',
-  handler,
+  config: {
+    handler,
+    payload: {
+      maxBytes: 209715200,
+      output: 'file',
+      parse: true,
+    },
+  },
 };
