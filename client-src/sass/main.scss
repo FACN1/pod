@@ -79,9 +79,11 @@ body {
   animation-iteration-count: infinite ;
   animation-direction: alternate ;
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 250px;
+  background-repeat: no-repeat;
+  background-image: url('../images/visa.png');
+  height: 158px;
   border: 2px dashed #f6f3f5;
-  padding: 4%;
+  // padding: 4%;
   border-radius: 0.5rem;
 }
