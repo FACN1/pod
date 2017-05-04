@@ -1,6 +1,6 @@
 'use strict';
 
-var makeRequest = function makeRequest(method, url, callback) {
+var makeRequest = function makeRequest(method, url, callback, payload) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
@@ -13,32 +13,32 @@ var makeRequest = function makeRequest(method, url, callback) {
   };
 
   xhr.open(method, url);
-  xhr.send();
+  xhr.send(payload);
 };
 
-var cCardLink = document.getElementById('loadLink');
+var cCardLink = document.querySelector('.visa-img');
 
-var clickLinkListener = function clickLinkListener(element) {
-  element.addEventListener('click', function (event) {
-    event.preventDefault();
-
-    var originalUrl = cCardLink.href;
-
-    console.log(event);
-    makeRequest('GET', cCardLink.href, function (err, res) {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      document.getElementById('outerContainer').innerHTML = res;
-      window.history.pushState(null, null, originalUrl.split('?ajax=true')[0]);
-
-      clickLinkListener(cCardLink);
-    });
-  });
-};
-
-clickLinkListener(cCardLink);
+// const clickLinkListener = (element) => {
+//   element.addEventListener('click', (event) => {
+//     event.preventDefault();
+//
+//     const originalUrl = cCardLink.href;
+//
+//     console.log(event);
+//     makeRequest('GET', cCardLink.href, (err, res) => {
+//       if (err) {
+//         console.error(err);
+//         return;
+//       }
+//       document.getElementById('outerContainer').innerHTML = res;
+//       window.history.pushState(null, null, originalUrl.split('?ajax=true')[0]);
+//
+//       clickLinkListener(cCardLink);
+//     });
+//   });
+// };
+//
+// clickLinkListener(cCardLink);
 
 var geo = navigator.geolocation;
 
@@ -94,4 +94,27 @@ var getLocation = function getLocation() {
 };
 
 window.onload = getLocation;
+
+document.querySelector('.visa-img').addEventListener('click', function () /* event */{
+  document.getElementById('camera').click();
+});
+
+var camera = document.getElementById('camera');
+// const frame = document.getElementById('frame');
+
+camera.addEventListener('change', function (e) {
+  var file = e.target.files[0];
+  // const fileObject = {
+  //   image: file,
+  // };
+  // console.log(JSON.parse(JSON.stringify(fileObject)));
+
+  makeRequest('POST', '/card', function (err) {
+    if (err) {
+      console.error(err);
+    }
+  }, file);
+
+  // frame.src = URL.createObjectURL(file);
+});
 //# sourceMappingURL=main.js.map
