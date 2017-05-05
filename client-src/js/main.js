@@ -1,4 +1,4 @@
-const makeRequest = (method, url, callback) => {
+const makeRequest = (method, url, callback, payload) => {
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = () => {
     if (xhr.readyState === 4) {
@@ -11,32 +11,33 @@ const makeRequest = (method, url, callback) => {
   };
 
   xhr.open(method, url);
-  xhr.send();
+  xhr.send(payload);
 };
 
-const cCardLink = document.getElementById('loadLink');
 
-const clickLinkListener = (element) => {
-  element.addEventListener('click', (event) => {
-    event.preventDefault();
+const cCardLink = document.querySelector('.visa-img');
 
-    const originalUrl = cCardLink.href;
-
-    console.log(event);
-    makeRequest('GET', cCardLink.href, (err, res) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      document.getElementById('outerContainer').innerHTML = res;
-      window.history.pushState(null, null, originalUrl.split('?ajax=true')[0]);
-
-      clickLinkListener(cCardLink);
-    });
-  });
-};
-
-clickLinkListener(cCardLink);
+// const clickLinkListener = (element) => {
+//   element.addEventListener('click', (event) => {
+//     event.preventDefault();
+//
+//     const originalUrl = cCardLink.href;
+//
+//     console.log(event);
+//     makeRequest('GET', cCardLink.href, (err, res) => {
+//       if (err) {
+//         console.error(err);
+//         return;
+//       }
+//       document.getElementById('outerContainer').innerHTML = res;
+//       window.history.pushState(null, null, originalUrl.split('?ajax=true')[0]);
+//
+//       clickLinkListener(cCardLink);
+//     });
+//   });
+// };
+//
+// clickLinkListener(cCardLink);
 
 const geo = navigator.geolocation;
 
@@ -88,3 +89,26 @@ const getLocation = () => {
 };
 
 window.onload = getLocation;
+
+document.querySelector('.visa-img').addEventListener('click', (/* event */) => {
+  document.getElementById('camera').click();
+});
+
+const camera = document.getElementById('camera');
+// const frame = document.getElementById('frame');
+
+camera.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  // const fileObject = {
+  //   image: file,
+  // };
+  // console.log(JSON.parse(JSON.stringify(fileObject)));
+
+  makeRequest('POST', '/card', (err) => {
+    if (err) {
+      console.error(err);
+    }
+  }, file);
+
+  // frame.src = URL.createObjectURL(file);
+});
