@@ -43,9 +43,12 @@
     "gulp-sourcemaps": "^2.6.0",
     "handlebars": "^4.0.7",
     "hapi": "^16.1.1",
+    "hapi-auth-jwt2": "^7.2.4",
     "inert": "^4.2.0",
+    "jsonwebtoken": "^7.4.0",
     "node-sass": "^4.5.2",
     "pg": "^6.1.5",
+    "uuid": "^3.0.1",
     "vision": "^4.1.1"
   },
   "devDependencies": {
