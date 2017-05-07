@@ -93,34 +93,37 @@ const getLocation = () => {
 window.onload = getLocation;
 
 document.querySelector('.visa-img').addEventListener('click', (/* event */) => {
-  document.getElementById('camera').click();
+  document.getElementById('cardCamera').click();
 });
 
-const camera = document.getElementById('camera');
+const camera = document.getElementById('cardCamera');
 // const frame = document.getElementById('frame');
+let token = '';
 
-camera.addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  // const fileObject = {
-  //   image: file,
-  // };
-  // console.log(JSON.parse(JSON.stringify(fileObject)));
-
-  makeRequest('POST', '/card', (err, res) => {
+const scanCamera = (route, targetDestination, file) => {
+  makeRequest('POST', 'card', (err, res) => {
     if (err) {
       return console.error(err);
     }
     const responseObj = JSON.parse(res);
-    const token = responseObj.token;
+    token = responseObj.token;
 
-    return makeRequest('GET', '/cart?ajax=true', (cartErr, cartRes) => {
-      if (cartErr) {
-        return console.error(cartErr);
+    return makeRequest('GET', `${targetDestination}?ajax=true`, (routeErr, cartRes) => {
+      if (routeErr) {
+        return console.error(routeErr);
       }
       document.getElementById('outerContainer').innerHTML = cartRes;
-      return window.history.pushState(null, null, '/cart');
-    }, null, ['Authorization', token]);
-  }, file);
 
-  // frame.src = URL.createObjectURL(file);
+      const itemCamera = document.getElementById('itemCamera');
+      itemCamera.addEventListener('change', (e) => {
+        scanCamera(targetDestination, e.target.files[0]);
+      });
+
+      return window.history.pushState(null, null, targetDestination);
+    }, null, ['Authorization', token]);
+  }, file, token);
+};
+
+camera.addEventListener('change', (e) => {
+  scanCamera('/card', '/cart', e.target.files[0]);
 });
