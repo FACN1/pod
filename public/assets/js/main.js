@@ -1,6 +1,6 @@
 'use strict';
 
-var makeRequest = function makeRequest(method, url, callback, payload) {
+var makeRequest = function makeRequest(method, url, callback, payload, header) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
@@ -13,7 +13,9 @@ var makeRequest = function makeRequest(method, url, callback, payload) {
   };
 
   xhr.open(method, url);
-  xhr.send(payload);
+  if (header) xhr.setRequestHeader(header[0], header[1]);
+  if (payload) return xhr.send(payload);
+  return xhr.send(payload);
 };
 
 var cCardLink = document.querySelector('.visa-img');
@@ -109,10 +111,20 @@ camera.addEventListener('change', function (e) {
   // };
   // console.log(JSON.parse(JSON.stringify(fileObject)));
 
-  makeRequest('POST', '/card', function (err) {
+  makeRequest('POST', '/card', function (err, res) {
     if (err) {
-      console.error(err);
+      return console.error(err);
     }
+    var responseObj = JSON.parse(res);
+    var token = responseObj.token;
+
+    return makeRequest('GET', '/cart?ajax=true', function (cartErr, cartRes) {
+      if (cartErr) {
+        return console.error(cartErr);
+      }
+      document.getElementById('outerContainer').innerHTML = cartRes;
+      return window.history.pushState(null, null, '/cart');
+    }, null, ['Authorization', token]);
   }, file);
 
   // frame.src = URL.createObjectURL(file);
