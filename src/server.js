@@ -1,3 +1,4 @@
+const fs = require('fs');
 const hapi = require('hapi');
 const vision = require('vision');
 const routes = require('./routes/index.js');
@@ -7,8 +8,14 @@ const jwt = require('hapi-auth-jwt2');
 
 const server = new hapi.Server();
 
+const tls = {
+  key: fs.readFileSync('./keys/key.pem'),
+  cert: fs.readFileSync('./keys/cert.pem'),
+};
+
 server.connection({
   port: process.env.PORT || 3000,
+  tls,
 });
 
 const jwtValidate = (decoded, request, callback) => {
