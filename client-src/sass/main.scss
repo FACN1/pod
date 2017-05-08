@@ -1,13 +1,21 @@
-$font-color: #484c48;
+// Modules and partials
+@import "partials/base";
 
-body {
-  font-size: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0px;
-  flex-direction: column;
-}
+// Import partials
+@import "partials/reset";
+@import "partials/globals";
+
+@import "partials/animations";
+@import "partials/buttons";
+@import "partials/grids";
+@import "partials/typography";
+
+// Import layout
+@import "layouts/header";
+
+
+
+
 
 .status-bar {
   display: flex;
@@ -23,8 +31,7 @@ body {
 }
 
 #location {
-  font-size: 2vh;
-  color: #f6f3f5;
+  color: $white;
 }
 
 .app-shell {
@@ -40,26 +47,6 @@ body {
   flex-direction: column;
 }
 
-.title {
-  font-family: 'Sacramento', cursive;
-  text-align: center;
-  font-size: 12vh;
-  color: $font-color;
-  margin-bottom: -10%;
-  margin-right: 5%;
-}
-
-.logo {
-  width: 65%;
-  padding-left: 9%;
-}
-
-.tag-line {
-  font-family: 'Roboto', sans-serif;
-  font-size: 2vh;
-  color: $font-color;
-  padding-bottom: 15%;
-}
 
 #loadLink {
   display: none;
@@ -68,9 +55,7 @@ body {
   height: auto;
 }
 
-@keyframes blink {
-  50% { border-color: #3d8c31; }
-}
+
 
 .visa-img {
   animation-name: blink ;
