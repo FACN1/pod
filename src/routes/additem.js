@@ -17,22 +17,24 @@ const handler = (request, reply) => {
   if (request.auth.isAuthenticated) {
     vision.detectText(request.payload.path)
       .then((results) => {
-        const detections = results[0];
+        const detections = results[0].join();
 
-        const detectionsText = detections.join('');
+        let detectionsText = detections.replace(/[^0-9]/g, '').split(' ').join();
+        detectionsText = detectionsText.slice(0, detectionsText.length / 2);
 
-        const barcodeNumber = detectionsText.match('[0-9]{11}([0-9]{2})?')[0];
-        console.log('Image text: ', barcodeNumber);
+        // const barcodeNumber = detectionsText.match('[0-9]{11}([0-9]{2})?')[0];
+        console.log('Image text: ', detectionsText);
 
         return reply(JSON.stringify({
-          token: request.headers.authorization,
+          detectionsText,
         }));
       })
       .catch((err) => {
         console.error('ERROR: ', err);
+        return reply(JSON.stringify({ error: 'Internal server error' }));
       });
   } else {
-    reply('Not authorized');
+    reply(JSON.stringify({ error: 'Not authorized' }));
   }
 /*
   request.payload
