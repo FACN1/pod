@@ -129,6 +129,7 @@ cardCamera.addEventListener('change', function (cardEvent) {
         }, itemEvent.target.files[0], ['Authorization', token]);
       });
 
+
       return window.history.pushState(null, null, '/cart');
     }, null, ['Authorization', token]);
   }, cardEvent.target.files[0]);
