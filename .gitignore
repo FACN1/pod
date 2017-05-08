@@ -3,4 +3,5 @@ config.env
 .eslintcache
 googleapikey.json
 designs/sample-card.psd
+feat/server-session-token
 keys/

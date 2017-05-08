@@ -21,5 +21,10 @@ const handler = (request, reply) => {
 module.exports = {
   method: 'GET',
   path: '/',
+  config: {
+    auth: {
+      mode: 'optional',
+    },
+  },
   handler,
 };

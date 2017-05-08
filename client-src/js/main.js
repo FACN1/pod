@@ -1,4 +1,4 @@
-const makeRequest = (method, url, callback, payload) => {
+const makeRequest = (method, url, callback, payload, header) => {
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = () => {
     if (xhr.readyState === 4) {
@@ -11,7 +11,9 @@ const makeRequest = (method, url, callback, payload) => {
   };
 
   xhr.open(method, url);
-  xhr.send(payload);
+  if (header) xhr.setRequestHeader(header[0], header[1]);
+  if (payload) return xhr.send(payload);
+  return xhr.send(payload);
 };
 
 
@@ -104,10 +106,20 @@ camera.addEventListener('change', (e) => {
   // };
   // console.log(JSON.parse(JSON.stringify(fileObject)));
 
-  makeRequest('POST', '/card', (err) => {
+  makeRequest('POST', '/card', (err, res) => {
     if (err) {
-      console.error(err);
+      return console.error(err);
     }
+    const responseObj = JSON.parse(res);
+    const token = responseObj.token;
+
+    return makeRequest('GET', '/cart?ajax=true', (cartErr, cartRes) => {
+      if (cartErr) {
+        return console.error(cartErr);
+      }
+      document.getElementById('outerContainer').innerHTML = cartRes;
+      return window.history.pushState(null, null, '/cart');
+    }, null, ['Authorization', token]);
   }, file);
 
   // frame.src = URL.createObjectURL(file);
