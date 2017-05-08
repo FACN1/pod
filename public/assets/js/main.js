@@ -101,35 +101,36 @@ document.querySelector('.visa-img').addEventListener('click', function () /* eve
   document.getElementById('cardCamera').click();
 });
 
-var camera = document.getElementById('cardCamera');
+var cardCamera = document.getElementById('cardCamera');
 // const frame = document.getElementById('frame');
 var token = '';
 
-var scanCamera = function scanCamera(route, targetDestination, file) {
-  makeRequest('POST', 'card', function (err, res) {
-    if (err) {
-      return console.error(err);
-    }
-    var responseObj = JSON.parse(res);
-    token = responseObj.token;
+cardCamera.addEventListener('change', function (cardEvent) {
+  makeRequest('POST', '/card', function (err, res) {
+    if (err) return console.error(err);
 
-    return makeRequest('GET', targetDestination + '?ajax=true', function (routeErr, cartRes) {
-      if (routeErr) {
-        return console.error(routeErr);
-      }
+    var data = JSON.parse(res);
+    if (!token) token = data.token;
+
+    return makeRequest('GET', '/cart?ajax=true', function (cartErr, cartRes) {
+      if (cartErr) return console.error(cartErr);
+
       document.getElementById('outerContainer').innerHTML = cartRes;
 
       var itemCamera = document.getElementById('itemCamera');
-      itemCamera.addEventListener('change', function (e) {
-        scanCamera(targetDestination, e.target.files[0]);
+
+      itemCamera.addEventListener('change', function (itemEvent) {
+        makeRequest('POST', '/add-item', function (itemErr, itemRes) {
+          if (itemErr) return console.error(itemErr);
+
+          var itemData = JSON.parse(itemRes);
+
+          return console.log({ itemData: itemData });
+        }, itemEvent.target.files[0], ['Authorization', token]);
       });
 
-      return window.history.pushState(null, null, targetDestination);
+      return window.history.pushState(null, null, '/cart');
     }, null, ['Authorization', token]);
-  }, file, token);
-};
-
-camera.addEventListener('change', function (e) {
-  scanCamera('/card', '/cart', e.target.files[0]);
+  }, cardEvent.target.files[0]);
 });
 //# sourceMappingURL=main.js.map

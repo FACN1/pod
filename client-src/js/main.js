@@ -96,34 +96,36 @@ document.querySelector('.visa-img').addEventListener('click', (/* event */) => {
   document.getElementById('cardCamera').click();
 });
 
-const camera = document.getElementById('cardCamera');
+const cardCamera = document.getElementById('cardCamera');
 // const frame = document.getElementById('frame');
 let token = '';
 
-const scanCamera = (route, targetDestination, file) => {
-  makeRequest('POST', 'card', (err, res) => {
-    if (err) {
-      return console.error(err);
-    }
-    const responseObj = JSON.parse(res);
-    token = responseObj.token;
 
-    return makeRequest('GET', `${targetDestination}?ajax=true`, (routeErr, cartRes) => {
-      if (routeErr) {
-        return console.error(routeErr);
-      }
+cardCamera.addEventListener('change', (cardEvent) => {
+  makeRequest('POST', '/card', (err, res) => {
+    if (err) return console.error(err);
+
+    const data = JSON.parse(res);
+    if (!token) token = data.token;
+
+    return makeRequest('GET', '/cart?ajax=true', (cartErr, cartRes) => {
+      if (cartErr) return console.error(cartErr);
+
       document.getElementById('outerContainer').innerHTML = cartRes;
 
       const itemCamera = document.getElementById('itemCamera');
-      itemCamera.addEventListener('change', (e) => {
-        scanCamera(targetDestination, e.target.files[0]);
+
+      itemCamera.addEventListener('change', (itemEvent) => {
+        makeRequest('POST', '/add-item', (itemErr, itemRes) => {
+          if (itemErr) return console.error(itemErr);
+
+          const itemData = JSON.parse(itemRes);
+
+          return console.log({ itemData });
+        }, itemEvent.target.files[0], ['Authorization', token]);
       });
 
-      return window.history.pushState(null, null, targetDestination);
+      return window.history.pushState(null, null, '/cart');
     }, null, ['Authorization', token]);
-  }, file, token);
-};
-
-camera.addEventListener('change', (e) => {
-  scanCamera('/card', '/cart', e.target.files[0]);
+  }, cardEvent.target.files[0]);
 });
