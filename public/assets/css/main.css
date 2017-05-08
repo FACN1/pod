@@ -1,10 +1,131 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+  display: block; }
+
 body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+  blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+html {
   font-size: 8px;
+  font-family: "Roboto", sans-serif; }
+
+body {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0px;
   flex-direction: column; }
+
+@keyframes blink {
+  50% {
+    border-color: #3d8c31; } }
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.333333;
+  font-weight: 100; }
+
+h2 {
+  font-size: 2.5rem;
+  line-height: 1;
+  font-weight: 500; }
+
+h3 {
+  font-size: 2rem;
+  line-height: 0.666666; }
+
+h4 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.42857; }
+
+h5 {
+  font-size: 1.75rem; }
+
+h6 {
+  font-size: 1.75rem;
+  font-weight: 500; }
+
+p {
+  font-size: 1.75rem; }
+
+caption {
+  font-size: 1.5rem; }
+
+button {
+  text-transform: uppercase;
+  font-size: 1.75rem;
+  font-weight: 500; }
+
+.large-text {
+  font-size: 14rem;
+  font-weight: 100; }
+
+/*
+h1 {
+  font-size: 14rem;
+  font-weight: $light;
+}
+
+h2 {
+  font-size: 7rem;
+}
+
+h3 {
+  font-size: 5.625rem;
+}
+
+h4 {
+  font-size: 4.25rem;
+}
+
+h5 {
+  font-size: 3rem;
+}
+
+h6 {
+  font-size: 2.5rem;
+  font-size: $medium;
+}
+*/
+.title {
+  font-family: 'Sacramento', cursive;
+  font-size: 7rem;
+  color: #484c48; }
+
+.logo {
+  width: 65%;
+  padding-left: 9%; }
+
+.tag-line {
+  font-family: 'Roboto', sans-serif;
+  color: #484c48;
+  padding-bottom: 15%; }
 
 .status-bar {
   display: flex;
@@ -19,8 +140,7 @@ body {
   text-align: center; }
 
 #location {
-  font-size: 2vh;
-  color: #f6f3f5; }
+  color: #fff; }
 
 .app-shell {
   display: flex;
@@ -34,33 +154,11 @@ body {
   justify-content: center;
   flex-direction: column; }
 
-.title {
-  font-family: 'Sacramento', cursive;
-  text-align: center;
-  font-size: 12vh;
-  color: #484c48;
-  margin-bottom: -10%;
-  margin-right: 5%; }
-
-.logo {
-  width: 65%;
-  padding-left: 9%; }
-
-.tag-line {
-  font-family: 'Roboto', sans-serif;
-  font-size: 2vh;
-  color: #484c48;
-  padding-bottom: 15%; }
-
 #loadLink {
   display: none;
   justify-content: center;
   max-width: 35%;
   height: auto; }
-
-@keyframes blink {
-  50% {
-    border-color: #3d8c31; } }
 
 .visa-img {
   animation-name: blink;
